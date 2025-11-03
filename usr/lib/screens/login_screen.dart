@@ -1,3 +1,4 @@
+import 'package:couldai_user_app/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,10 +21,16 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       // Mock login
       Future.delayed(const Duration(seconds: 2), () {
-        setState(() {
-          _isLoading = false;
-        });
-        // TODO: Navigate to Dashboard
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const DashboardScreen(),
+            ),
+          );
+        }
       });
     }
   }
